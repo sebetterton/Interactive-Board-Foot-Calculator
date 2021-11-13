@@ -12,7 +12,7 @@ namespace BFCalculator
             Console.WriteLine("Welcome to the board foot calculator in C#");
             Console.WriteLine("-----------------------------------------\n");
 
-            Console.WriteLine("How wide would you like your piece of wood? Type your width in inches, using only doubleegers, then press Enter");
+            Console.WriteLine("How wide would you like your piece of wood? Type your width in inches, then press Enter");
             width1 = Convert.ToDouble(Console.ReadLine());
             while (width1 == 0)
                
@@ -22,7 +22,7 @@ namespace BFCalculator
                  
                     }
 
-            Console.WriteLine("How long would you like your piece of wood? Type your length in inches, using only doubleegers, then press Enter");
+            Console.WriteLine("How long would you like your piece of wood? Type your length in inches, then press Enter");
             length1 = Convert.ToDouble(Console.ReadLine()); ;
 
                 while (length1 == 0)
@@ -33,7 +33,7 @@ namespace BFCalculator
                         length1 = Convert.ToDouble(Console.ReadLine());
                     }
 
-            Console.WriteLine("How thick would you like your piece of wood in inches? Type 1, 2, 3 or 4 then press Enter");
+            Console.WriteLine("How thick would you like your piece of wood in inches?");
             thickness1 = Convert.ToDouble(Console.ReadLine()); ;
 
                     while (thickness1 == 0)
