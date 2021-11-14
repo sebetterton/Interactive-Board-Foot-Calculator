@@ -4,79 +4,86 @@ namespace BFCalculator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main (string[] args)
         {
-            double width; double length; double thickness;
+            bool endApp = false;
+            //Title displayed as the C# Board Foot Calculator App
+            Console.WriteLine("C# Board Foot Calculator\r");
+            Console.WriteLine("------------------------\n");
 
-
-            Console.WriteLine("Welcome to the board foot calculator in C#");
-            Console.WriteLine("-----------------------------------------\n");
-
-            Console.WriteLine("How wide would you like your piece of wood? Type your width in inches, then press Enter");
-            width = Convert.ToDouble(Console.ReadLine());
-            while (width == 0)
-               
-                    {
-                        Console.WriteLine("Enter a non-zero number: ");
-                        width = Convert.ToDouble(Console.ReadLine());
-                 
-                    }
-
-            Console.WriteLine("How long would you like your piece of wood? Type your length in inches, then press Enter");
-            length = Convert.ToDouble(Console.ReadLine()); ;
-
-                while (length == 0)
-                   
-                    {
-                        Console.WriteLine("Enter a non-zero number: ");
-                       
-                        length = Convert.ToDouble(Console.ReadLine());
-                    }
-
-            Console.WriteLine("How thick would you like your piece of wood in inches?");
-            thickness = Convert.ToDouble(Console.ReadLine()); ;
-
-                    while (thickness == 0)
-                    {
-                        Console.WriteLine("Enter a non-zero number: ");
-                    
-                        thickness = Convert.ToDouble(Console.ReadLine());
-                    }
-
-            Console.WriteLine("Now that we know what size you need, select a wood type to generate price:");
-            Console.WriteLine("\ta - Walnut-$10 per board foot");
-            Console.WriteLine("\tb - Oak-$6 per board foot");
-            Console.WriteLine("\tc - Ash-$5 per board foot");
-            Console.WriteLine("\td - Maple-$8 per board foot");
-            Console.Write("Your option? ");
-
-            switch (Console.ReadLine())
+            while (!endApp)
             {
+                //Variables declared and set to empty
+                string widthInput = "";
+                string lengthInput = "";
+                string thicknessInput = "";
+                double result = 0;
 
-                case "a":
-                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {10} = " + ((width / 12) * (length / 12) * (thickness) * 10));
-                  
-                    break;
-               
-                case "b":
-                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {6} = " + ((width / 12) * (length / 12) * (thickness) * 6));
-                   
-                    break;
-               
-                case "c":
-                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {5} = " + ((width / 12) * (length / 12) * (thickness) * 5));
-                   
-                    break;
-                
-                case "d":
-                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {8} = " + ((width / 12) * (length / 12) * (thickness) * 8));
-                    
-                    break;
+                //Request the user to input the desired width in inches
+                Console.WriteLine("How Wide would you like your piece of wood?  Enter a width in inches, then press 'Enter'.");
+                widthInput = Console.ReadLine();
+
+                double cleanWidth = 0;
+                while (!double.TryParse(widthInput, out cleanWidth))
+                {
+                    Console.WriteLine("This is not a valid input.  Please enter an integer value: ");
+                    widthInput = Console.ReadLine();
+                }
+                //Request the user to input the desired length in inches
+                Console.WriteLine("How long would you like your piece of wood?  Enter a length in inches, then press 'Enter'.");
+                lengthInput = Console.ReadLine();
+
+                double cleanLength = 0;
+                while (!double.TryParse(lengthInput, out cleanLength))
+                {
+                    Console.WriteLine("This is not a valid input.  Please enter an integer value: ");
+                    lengthInput = Console.ReadLine();
+                }
+                //Request the user to input the desired width in inches
+                Console.WriteLine("How thick would you like your piece of wood? Enter a thickness in inches, then press 'Enter'.");
+                thicknessInput = Console.ReadLine();
+
+                double cleanThickness = 0;
+                while (!double.TryParse(thicknessInput, out cleanThickness))
+                {
+                    Console.WriteLine("This is not a valid input.  Please enter an integer value: ");
+                    thicknessInput = Console.ReadLine();
+                }
+                // Ask the user to choose an operator.
+                Console.WriteLine("Choose a wood type from the following list:");
+                Console.WriteLine("\ta - Walnut- $10 per board foot");
+                Console.WriteLine("\tb - Oak - $6.75 per board foot");
+                Console.WriteLine("\tc - Ash - $6 per board foot");
+                Console.WriteLine("\td - Maple - $8 per board foot");
+                Console.Write("Your option? ");
+
+                string WoodType = Console.ReadLine();
+
+                try
+                {
+                    result = Calculator.DoOperation(cleanWidth, cleanLength, cleanThickness, WoodType);
+                    if (double.IsNaN(result))
+                    {
+                        Console.WriteLine("This operation will result in a mathematical error.\n");
+                    }
+                    else Console.WriteLine("That species of wood in that size will cost: $ {0:0.##}\n", result);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Oh no! An exception occurred trying to do the math.\n - Details: " + e.Message);
+                }
+
+                Console.WriteLine("------------------------\n");
+
+                // Wait for the user to respond before closing.
+                Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
+                if (Console.ReadLine() == "n") endApp = true;
+
+                Console.WriteLine("\n"); // Friendly linespacing.
             }
-            // Wait for the user to respond before closing.
-            Console.Write("Press any key to close the Calculator console app...");
-            Console.ReadKey();
+            return;
         }
     }
-    }
+    
+}
 
