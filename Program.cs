@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace BFCalculator
+
+namespace BFCalculatorProgram
 {
     class Program
     {
@@ -61,7 +62,8 @@ namespace BFCalculator
 
                 try
                 {
-                    result = Calculator.DoOperation(cleanWidth, cleanLength, cleanThickness, WoodType);
+                        Calculator calculator = new Calculator();
+                    result = calculator.DoOperation(cleanWidth, cleanLength, cleanThickness, WoodType);
                     if (double.IsNaN(result))
                     {
                         Console.WriteLine("This operation will result in a mathematical error.\n");
