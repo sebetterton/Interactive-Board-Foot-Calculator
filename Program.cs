@@ -6,41 +6,41 @@ namespace BFCalculator
     {
         static void Main(string[] args)
         {
-            double width1; double length1; double thickness1;
+            double width; double length; double thickness;
 
 
             Console.WriteLine("Welcome to the board foot calculator in C#");
             Console.WriteLine("-----------------------------------------\n");
 
             Console.WriteLine("How wide would you like your piece of wood? Type your width in inches, then press Enter");
-            width1 = Convert.ToDouble(Console.ReadLine());
-            while (width1 == 0)
+            width = Convert.ToDouble(Console.ReadLine());
+            while (width == 0)
                
                     {
                         Console.WriteLine("Enter a non-zero number: ");
-                        width1 = Convert.ToDouble(Console.ReadLine());
+                        width = Convert.ToDouble(Console.ReadLine());
                  
                     }
 
             Console.WriteLine("How long would you like your piece of wood? Type your length in inches, then press Enter");
-            length1 = Convert.ToDouble(Console.ReadLine()); ;
+            length = Convert.ToDouble(Console.ReadLine()); ;
 
-                while (length1 == 0)
+                while (length == 0)
                    
                     {
                         Console.WriteLine("Enter a non-zero number: ");
                        
-                        length1 = Convert.ToDouble(Console.ReadLine());
+                        length = Convert.ToDouble(Console.ReadLine());
                     }
 
             Console.WriteLine("How thick would you like your piece of wood in inches?");
-            thickness1 = Convert.ToDouble(Console.ReadLine()); ;
+            thickness = Convert.ToDouble(Console.ReadLine()); ;
 
-                    while (thickness1 == 0)
+                    while (thickness == 0)
                     {
                         Console.WriteLine("Enter a non-zero number: ");
                     
-                        thickness1 = Convert.ToDouble(Console.ReadLine());
+                        thickness = Convert.ToDouble(Console.ReadLine());
                     }
 
             Console.WriteLine("Now that we know what size you need, select a wood type to generate price:");
@@ -54,22 +54,22 @@ namespace BFCalculator
             {
 
                 case "a":
-                    Console.WriteLine($"Your total cost is: {width1 / 12} * {length1 / 12} * {thickness1} * {10} = " + ((width1 / 12) * (length1 / 12) * (thickness1) * 10));
+                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {10} = " + ((width / 12) * (length / 12) * (thickness) * 10));
                   
                     break;
                
                 case "b":
-                    Console.WriteLine($"Your total cost is: {width1 / 12} * {length1 / 12} * {thickness1} * {6} = " + ((width1 / 12) * (length1 / 12) * (thickness1) * 6));
+                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {6} = " + ((width / 12) * (length / 12) * (thickness) * 6));
                    
                     break;
                
                 case "c":
-                    Console.WriteLine($"Your total cost is: {width1 / 12} * {length1 / 12} * {thickness1} * {5} = " + ((width1 / 12) * (length1 / 12) * (thickness1) * 5));
+                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {5} = " + ((width / 12) * (length / 12) * (thickness) * 5));
                    
                     break;
                 
                 case "d":
-                    Console.WriteLine($"Your total cost is: {width1 / 12} * {length1 / 12} * {thickness1} * {8} = " + ((width1 / 12) * (length1 / 12) * (thickness1) * 8));
+                    Console.WriteLine($"Your total cost is: {width / 12} * {length / 12} * {thickness} * {8} = " + ((width / 12) * (length / 12) * (thickness) * 8));
                     
                     break;
             }
