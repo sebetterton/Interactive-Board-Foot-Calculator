@@ -30,7 +30,7 @@ namespace BFCalculator
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 6);
+                                result = ((width / 12) * (length / 12) * (thickness) * 6.75);
                             }
                     break;
                 case "c":
@@ -39,7 +39,7 @@ namespace BFCalculator
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 5);
+                                result = ((width / 12) * (length / 12) * (thickness) * 6);
                             }
                     break;
                 case "d":
