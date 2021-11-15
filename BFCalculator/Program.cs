@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BFCalculatorLibrary;
+using System;
 
 
 namespace BFCalculatorProgram
@@ -12,6 +13,7 @@ namespace BFCalculatorProgram
             Console.WriteLine("C# Board Foot Calculator\r");
             Console.WriteLine("------------------------\n");
 
+            Calculator calculator = new Calculator();
             while (!endApp)
             {
                 //Variables declared and set to empty
@@ -50,7 +52,7 @@ namespace BFCalculatorProgram
                     Console.WriteLine("This is not a valid input.  Please enter an integer value: ");
                     thicknessInput = Console.ReadLine();
                 }
-                // Ask the user to choose an operator.
+                // Ask the user to choose a wood type.
                 Console.WriteLine("Choose a wood type from the following list:");
                 Console.WriteLine("\ta - Walnut- $10 per board foot");
                 Console.WriteLine("\tb - Oak - $6.75 per board foot");
@@ -62,7 +64,6 @@ namespace BFCalculatorProgram
 
                 try
                 {
-                        Calculator calculator = new Calculator();
                     result = calculator.DoOperation(cleanWidth, cleanLength, cleanThickness, WoodType);
                     if (double.IsNaN(result))
                     {
@@ -83,6 +84,7 @@ namespace BFCalculatorProgram
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
+            calculator.Finish();
             return;
         }
     }
