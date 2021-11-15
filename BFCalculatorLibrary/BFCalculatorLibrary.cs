@@ -21,17 +21,17 @@ namespace BFCalculatorLibrary
         }
         public double DoOperation(double width, double length, double thickness, string WoodType)
         {
-            double result = double.NaN; //Default is 'not a number' if an operation could result in an error.
+            double TotalCost = double.NaN; //Default is 'not a number' if an operation could result in an error.
             writer.WriteStartObject();
-            writer.WritePropertyName("Operand1");
+            writer.WritePropertyName("Width");
             writer.WriteValue(width);
-            writer.WritePropertyName("Operand2");
+            writer.WritePropertyName("Length");
             writer.WriteValue(length);
-            writer.WritePropertyName("Operand3");
+            writer.WritePropertyName("Thickness");
             writer.WriteValue(thickness);
-            writer.WritePropertyName("Operation");
+            writer.WritePropertyName("Wood Species");
 
-            //utilizing switch statements for caluclations.
+            //utilizing switch statements for calculations.
             switch (WoodType)
             {
                 case "a":
@@ -40,7 +40,7 @@ namespace BFCalculatorLibrary
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 10);
+                                TotalCost = ((width / 12) * (length / 12) * (thickness) * 10);
                                 writer.WriteValue("Walnut");
                             }
                     break;
@@ -50,7 +50,7 @@ namespace BFCalculatorLibrary
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 6.75);
+                                TotalCost = ((width / 12) * (length / 12) * (thickness) * 6.75);
                                 writer.WriteValue("Oak");
                             }
                     break;
@@ -60,7 +60,7 @@ namespace BFCalculatorLibrary
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 6);
+                                TotalCost = ((width / 12) * (length / 12) * (thickness) * 6);
                                 writer.WriteValue("Ash");
                             }
                     break;
@@ -70,7 +70,7 @@ namespace BFCalculatorLibrary
                         if (length != 0)
                             if (thickness != 0)
                             {
-                                result = ((width / 12) * (length / 12) * (thickness) * 8);
+                                TotalCost = ((width / 12) * (length / 12) * (thickness) * 8);
                                 writer.WriteValue("Maple");
                             }
                     break;
@@ -79,11 +79,11 @@ namespace BFCalculatorLibrary
                     break;
             }
            
-            writer.WritePropertyName("Result");
-            writer.WriteValue(result);
+            writer.WritePropertyName("Total Cost");
+            writer.WriteValue(TotalCost);
             writer.WriteEndObject();
 
-            return result;
+            return TotalCost;
         }
 
         public void Finish()
